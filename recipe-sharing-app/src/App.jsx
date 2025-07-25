@@ -5,13 +5,10 @@ import RecipeDetails from './RecipeDetails';
 
 function App() {
   return (
-    <main style={{ maxWidth: 640, margin: '2rem auto', fontFamily: 'sans-serif' }}>
+    <main>
       <h1>
-        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          Recipe Sharing App
-        </Link>
+        <Link to="/">Recipe Sharing App</Link>
       </h1>
-
       <Routes>
         <Route
           path="/"
