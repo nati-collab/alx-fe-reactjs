@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useRecipeStore from './recipestore';
+import useRecipeStore from './store/recipeStore';
 
 const EditRecipeForm = ({ recipe }) => {
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
@@ -14,34 +14,22 @@ const EditRecipeForm = ({ recipe }) => {
   };
 
   if (!isEditing) {
-    return (
-      <button onClick={() => setIsEditing(true)} style={{ marginRight: 10 }}>
-        Edit Recipe
-      </button>
-    );
+    return <button onClick={() => setIsEditing(true)}>Edit Recipe</button>;
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginTop: '1rem' }}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        required
-        style={{ display: 'block', marginBottom: 8, width: '100%' }}
       />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        rows={4}
-        style={{ display: 'block', marginBottom: 8, width: '100%' }}
       />
-      <button type="submit" style={{ marginRight: 8 }}>
-        Save
-      </button>
-      <button type="button" onClick={() => setIsEditing(false)}>
-        Cancel
-      </button>
+      <button type="submit">Save</button>
+      <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
     </form>
   );
 };

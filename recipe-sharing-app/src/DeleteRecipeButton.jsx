@@ -1,23 +1,16 @@
-import useRecipeStore from './recipestore';
+import useRecipeStore from './store/recipeStore';
 
 const DeleteRecipeButton = ({ recipeId, onDelete }) => {
   const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this recipe?')) {
+    if (window.confirm('Delete this recipe?')) {
       deleteRecipe(recipeId);
       if (onDelete) onDelete();
     }
   };
 
-  return (
-    <button
-      onClick={handleDelete}
-      style={{ backgroundColor: 'red', color: 'white', marginTop: '1rem' }}
-    >
-      Delete Recipe
-    </button>
-  );
+  return <button onClick={handleDelete}>Delete Recipe</button>;
 };
 
 export default DeleteRecipeButton;

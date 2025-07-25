@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import useRecipeStore from './recipestore';
+import useRecipeStore from './recipeStore';
 import EditRecipeForm from './EditRecipeForm';
 import DeleteRecipeButton from './DeleteRecipeButton';
 
@@ -13,15 +13,11 @@ const RecipeDetails = () => {
   if (!recipe) return <p>Recipe not found.</p>;
 
   return (
-    <div style={{ maxWidth: 640, margin: '2rem auto' }}>
+    <div>
       <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
-
       <EditRecipeForm recipe={recipe} />
-      <DeleteRecipeButton
-        recipeId={recipe.id}
-        onDelete={() => navigate('/')}
-      />
+      <DeleteRecipeButton recipeId={recipe.id} onDelete={() => navigate('/')} />
     </div>
   );
 };
